@@ -1,24 +1,44 @@
 # Calculator
 
-**TODO: Add description**
+Simple calculator server.
 
-## Installation
+This calculator preserves the state(calculator memory).
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+It's based on Ch 5 of the book elixir in action.
 
-  1. Add `calculator` to your list of dependencies in `mix.exs`:
+## Install
 
-    ```elixir
-    def deps do
-      [{:calculator, "~> 0.1.0"}]
-    end
-    ```
+    - clone the repo
+    - cd eia_calculator
+    - mix deps.get
+    - iex -S mix
 
-  2. Ensure `calculator` is started before your application:
+## Use
+    c_pid = Calculator.start
 
-    ```elixir
-    def application do
-      [applications: [:calculator]]
-    end
-    ```
+    #PID<######>
 
+    Calculator.value(c_pid)
+    0
+
+    Calculator.add(c_pid,1)
+    {:add, 1}
+
+    Calculator.value(c_pid)
+    1
+
+    c_pid2 = Calculator.start
+
+    #PID<######>
+
+    Calculator.value(c_pid2)
+    0
+
+    Calculator.add(c_pid2,10)
+    {:add, 10}
+
+    Calculator.value(c_pid2)
+    10
+
+    Calculator.value(c_pid)
+    1
